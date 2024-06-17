@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 
+const API = import.meta.env.VITE_API
 const WorkoutForm = () => {
   const { dispatch } = useWorkoutsContext();
   const [title, setTitle] = useState("");
@@ -14,7 +15,7 @@ const WorkoutForm = () => {
 
     const newWorkout = { title, load, reps };
 
-    const response = await fetch("/api/workouts", {
+    const response = await fetch(`${API}/api/workouts`, {
       method: "POST",
       body: JSON.stringify(newWorkout),
       headers: {

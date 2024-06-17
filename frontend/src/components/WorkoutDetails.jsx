@@ -2,11 +2,13 @@ import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import {toSentenceCase} from "../utils/utility"
 
+const API = import.meta.env.VITE_API
+
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
   const handleClick = async () => {
     const response = await fetch(
-      "/api/workouts/" + workout._id,
+      `${API}/api/workouts/`+ workout._id,
       {
         method: "DELETE",
       }

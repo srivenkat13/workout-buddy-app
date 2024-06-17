@@ -3,15 +3,15 @@ import { useEffect } from "react";
 import WorkoutDetails from "../components/WorkoutDetails";
 import WorkoutForm from "../components/WorkoutForm";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
-// import{API} from "../backend"
-
+const API = import.meta.env.VITE_API 
 const Home = () => {
   const { workouts, dispatch } = useWorkoutsContext();
 
   useEffect(() => {
     const fetchWorkouts = async () => {
+      // console.log(import.meta.env.VITE_API) 
       // TODO: Wrap this in try catch block
-      const response = await fetch(`/api/workouts/`);
+      const response = await fetch(`${API}/api/workouts/`);
       const json = await response.json();
 
       // json.map((workout) => console.log(workout.title));

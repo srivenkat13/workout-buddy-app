@@ -178,6 +178,17 @@ input.error {
   font-size: 0.9em;
   color: #555;
 }
+.diet-container span {
+  font-size: smaller;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #64b8a0;
+  padding: 6px;
+  border-radius: 4px;
+  color: #333;
+}
 
 .time {
   text-align: right;

@@ -1,8 +1,27 @@
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { toSentenceCase } from "../utils/utility";
 
+const API = import.meta.env.VITE_API
+
 console.log(`%c working `, "background:blue; color:yellow");
 const DietDetails = ({ diet }) => {
+
+  const handleClick = async () => {
+    const response = await fetch(
+      `${API}/api/diets/`+ diet._id,
+      {
+        method: "DELETE",
+      }
+    );
+
+    const json = await response.json();
+    console.info(json)
+
+    if (response.ok) {
+     
+    }
+  };
+
   return (
     <div className="diet-container">
       <h4>{toSentenceCase(diet.food)}</h4>
@@ -16,6 +35,9 @@ const DietDetails = ({ diet }) => {
       <p className="time">
         {formatDistanceToNow(new Date(diet.createdAt), { addSuffix: true })}
       </p>
+      <span className="material-symbols-outlined" onClick={handleClick}>
+        Delete
+      </span>
     </div>
   );
 };

@@ -8,12 +8,21 @@ const dietSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      lowercase:true
+      lowercase: true,
     },
-    portion: { type: Number, required: true },
+    portion: {
+      type: Number,
+      required: true,
+    },
     macros: {
-      name: String,
-      weight: Number,
+      name: {
+        type: String,
+        required: true,
+      },
+      weight: {
+        type: Number,
+        required: true,
+      },
     },
   },
   { timestamps: true }

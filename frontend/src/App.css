@@ -13,14 +13,27 @@ body {
 }
 header {
   background: #fff;
+  position: relative; 
+  z-index: 1
+}
+header::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -20px; /* Adjust this if you need more space between the header and the gradient */
+  height: 20px; /* Height of the fade effect */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+  z-index: -1; /* Ensure the gradient is below the header content */
 }
 header .container {
   max-width: 1400px;
   margin: 0 auto;
-  /* padding: 10px 20px; */
   display: flex;
   align-items: center;
   justify-content: space-around;
+  /* border-bottom: 3px  dotted rgba(101, 172, 152, 0.991); */
 }
 header a {
   color: #333;
@@ -64,7 +77,7 @@ h1.active::after {
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
 }
 .workout-details h4 {
   margin: 0 0 10px 0;
@@ -147,7 +160,6 @@ input.error {
   background: #fff;
   border-radius: 4px;
   margin: 20px 20px;
-  width: 40%;
   padding: 20px;
   position: relative;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
@@ -169,4 +181,35 @@ input.error {
   display: block;
   color: #999 !important;
   font-size: 0.2em;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .home {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 10px;
+    gap: 20px;
+  }
+  .workout-details {
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  .workout-details h4 {
+    font-size: 1em;
+  }
+  .workout-details p {
+    font-size: 0.8em;
+  }
+  .pages {
+    padding: 10px;
+  }
+  form button {
+    width: 100%;
+  }
 }

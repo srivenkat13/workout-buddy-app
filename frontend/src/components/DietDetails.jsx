@@ -1,24 +1,22 @@
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { toSentenceCase } from "../utils/utility";
+import { useFormContext } from "../hooks/useFormContext";
 
-const API = import.meta.env.VITE_API
+const API = import.meta.env.VITE_API;
 
 console.log(`%c working `, "background:blue; color:yellow");
 const DietDetails = ({ diet }) => {
-
+  const { dcontext } = useFormContext();
   const handleClick = async () => {
-    const response = await fetch(
-      `${API}/api/diets/`+ diet._id,
-      {
-        method: "DELETE",
-      }
-    );
+    const response = await fetch(`${API}/api/diets/` + diet._id, {
+      method: "DELETE",
+    });
 
     const json = await response.json();
     console.info(json)
 
     if (response.ok) {
-     
+      dcontext.dispatch({ type: "DELETE_DIET", payload: json });
     }
   };
 

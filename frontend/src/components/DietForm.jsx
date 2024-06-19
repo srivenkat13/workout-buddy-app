@@ -1,14 +1,16 @@
 import { useRef, useState } from "react";
+import { useFormContext } from "../hooks/useFormContext";
 
 const API = import.meta.env.VITE_API;
 const DietForm = () => {
+  const {dcontext} = useFormContext();
   const [food, setFood] = useState("");
   const [portion, setPortion] = useState("");
   const [mName, setMName] = useState("");
   const [mWeight, setMWeight] = useState("");
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
-  const FoodRef = useRef()
+  const FoodRef = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,7 +38,7 @@ const DietForm = () => {
       if (!response.ok) {
         if (response.status === 409) {
           setError(result.error);
-          setFood("")
+          setFood("");
           FoodRef.current.focus();
         } else {
           setError(result.error);
@@ -51,6 +53,7 @@ const DietForm = () => {
           setError(null);
         setEmptyFields([]);
         console.log("new diet added", result);
+        dcontext.dispatch({ type: "CREATE_DIET", payload: result });
       }
     } catch (error) {
       setError("Error occured while creating diet");
@@ -69,7 +72,7 @@ const DietForm = () => {
           placeholder="e.g. eggs, spinach, chicken ..."
           ref={FoodRef}
           className={emptyFields.includes("food") ? "error" : ""}
-          />
+        />
       </div>
       <label>Portion:</label>
       <input
@@ -78,7 +81,7 @@ const DietForm = () => {
         value={portion}
         placeholder="in grams"
         className={emptyFields.includes("portion") ? "error" : ""}
-        />
+      />
       <label>Macro Name:</label>
       <input
         type="text"
@@ -86,7 +89,7 @@ const DietForm = () => {
         value={mName}
         placeholder="protein, fat, carb..."
         required
-        />
+      />
       <label>Marco Weight:</label>
       <input
         type="number"

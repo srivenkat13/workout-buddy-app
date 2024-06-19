@@ -1,11 +1,11 @@
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useFormContext } from "../hooks/useFormContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import {toSentenceCase} from "../utils/utility"
 
 const API = import.meta.env.VITE_API
 
 const WorkoutDetails = ({ workout }) => {
-  const { dispatch } = useWorkoutsContext();
+  const {wcontext } = useFormContext();
   const handleClick = async () => {
     const response = await fetch(
       `${API}/api/workouts/`+ workout._id,
@@ -17,7 +17,7 @@ const WorkoutDetails = ({ workout }) => {
     const json = await response.json();
 
     if (response.ok) {
-      dispatch({ type: "DELETE_WORKOUT", payload: json });
+      wcontext.dispatch({ type: "DELETE_WORKOUT", payload: json });
     }
   };
 

@@ -22,23 +22,31 @@ const getADiet = async (req, res) => {
 };
 
 const createDiet = async (req, res) => {
-  let newDiet = {
-    food: req.body.food,
-    portion: req.body.portion,
-    macros: req.body.macros,
-  };
+  const { food, portion, macros } = req.body;
+  const requiredFields = ["food", "portion"];
+  const emptyFields = [];
 
+  requiredFields.forEach((field) => {
+    if (!req.body[field]) {
+      emptyFields.push(field);
+    }
+  });
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: "Fill in all the fields", emptyFields });
+  }
   try {
-    const result = await Diet.create(newDiet);
-    res.send(result).status(200);
+    const result = await Diet.create({ food, portion, macros });
+    return res.status(201).json(result);
   } catch (error) {
     //  to handle a case duplicate entries
     if (error.code === 11000) {
       res
-        .status(400)
-        .json({ message: "Duplicate Entry: Food Name Must be unique" });
+        .status(409)
+        .json({ error: "Duplicate Entry: Food Name Must be unique" });
     } else {
-      res.status(400).send(`Error in adding diet plan (${error.message})`);
+      res.status(400).json({ error: `Error in adding diet plan`, error });
     }
 
     //  code: 'ERR_HTTP_HEADERS_SENT' this error occured when I sent 2 responses to one request

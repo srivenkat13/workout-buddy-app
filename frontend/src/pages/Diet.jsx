@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import DietDetails from "../components/DietDetails";
 import Loader from "../components/Loader";
+import DietForm from "../components/DietForm";
 const API = import.meta.env.VITE_API;
 
 const Diet = () => {
@@ -31,7 +32,7 @@ const Diet = () => {
     return <div className="error"> Error Loading Diet Data </div>;
   }
   return (
-    <div>
+    <div className="home">
       {loading ? (
         <Loader icon="grocery" />
       ) : (
@@ -41,6 +42,7 @@ const Diet = () => {
           )))}
         </div>
       )}
+      <DietForm />
     </div>
   );
 };

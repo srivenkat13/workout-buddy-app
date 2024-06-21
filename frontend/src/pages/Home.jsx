@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 import WorkoutDetails from "../components/WorkoutDetails";
 import WorkoutForm from "../components/WorkoutForm";
@@ -42,7 +43,14 @@ const Home = () => {
             <div className="workouts">
               {wcontext.workouts &&
                 wcontext.workouts.map((workout) => (
-                  <WorkoutDetails key={workout._id} workout={workout} />
+                  <motion.div
+                    key={workout._id}
+                    initial={{ opacity: 0, y: 100, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 1, ease: "easeInOut", delay: 0.1 }}
+                  >
+                    <WorkoutDetails workout={workout} />
+                  </motion.div>
                 ))}
             </div>
           )}

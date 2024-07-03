@@ -1,18 +1,20 @@
 import { useFormContext } from "../hooks/useFormContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-import {toSentenceCase} from "../utils/utility"
+import { toSentenceCase } from "../utils/utility";
+import { useAuthContext } from "../hooks/useAuthContext";
 
-const API = import.meta.env.VITE_API
+const API = import.meta.env.VITE_API;
 
 const WorkoutDetails = ({ workout }) => {
-  const {wcontext } = useFormContext();
+  const { wcontext } = useFormContext();
+  const { user } = useAuthContext();
   const handleClick = async () => {
-    const response = await fetch(
-      `${API}/api/workouts/`+ workout._id,
-      {
-        method: "DELETE",
-      }
-    );
+    const response = await fetch(`${API}/api/workouts/` + workout._id, {
+      method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${user.token} `,
+      },
+    });
 
     const json = await response.json();
 
@@ -21,7 +23,6 @@ const WorkoutDetails = ({ workout }) => {
     }
   };
 
- 
   return (
     <div className="workout-details">
       <h4>{toSentenceCase(workout.title)}</h4>

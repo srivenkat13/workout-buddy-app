@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useFormContext} from "../hooks/useFormContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const API = import.meta.env.VITE_API
 const WorkoutForm = () => {
@@ -9,6 +10,7 @@ const WorkoutForm = () => {
   const [reps, setReps] = useState("");
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
+  const { user } = useAuthContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +22,7 @@ const WorkoutForm = () => {
       body: JSON.stringify(newWorkout),
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${user.token} `,
       },
     });
 

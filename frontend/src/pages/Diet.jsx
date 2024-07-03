@@ -38,7 +38,7 @@ const Diet = () => {
         <Loader icon="grocery" />
       ) : (
         <div>
-          {dcontext.diets.map((diet) => (
+          {dcontext.diets && dcontext.diets.map((diet) => (
             <DietDetails key={diet._id} diet={diet} />
           ))}
         </div>

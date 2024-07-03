@@ -214,7 +214,8 @@ nav button {
   font-family: "Poppins";
   cursor: pointer;
   font-size: 1em;
-    }
+  margin-left: 10px;
+}
 
 /* signup and login  form */
 form.signup,

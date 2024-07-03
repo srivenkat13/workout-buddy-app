@@ -20,6 +20,7 @@ const Signup = () => {
         onChange={(e) => {
           setEmail(e.target.value);
         }}
+        required
       />
       <label>Password:</label>
       <input
@@ -28,6 +29,7 @@ const Signup = () => {
         onChange={(e) => {
           setPassword(e.target.value);
         }}
+        required
       />
       <button>Sign up</button>
     </form>

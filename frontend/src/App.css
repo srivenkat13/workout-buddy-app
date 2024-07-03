@@ -197,6 +197,25 @@ input.error {
   font-size: 0.2em;
 }
 
+nav {
+  display: flex;
+  align-items: center;
+}
+nav a {
+  margin-left: 10px;
+  font-weight: 100;
+}
+
+/* signup and login  form */
+form.signup,
+form.login {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
 /* Mobile styles */
 @media (max-width: 768px) {
   header h1 {
@@ -226,8 +245,16 @@ input.error {
   form button {
     width: 100%;
   }
+  form.signup,
+  form.login {
+    margin: 40% 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 7px #64b8a0;
+  }
+  form h3 {
+    text-align: center;
+  }
 }
-
 
 /*Loader.css */
 .loader {
@@ -245,7 +272,7 @@ input.error {
 
 .loader .material-symbols-outlined {
   font-size: 100px;
-  color: var(--primary); 
+  color: var(--primary);
   animation: spin 2.5s linear infinite;
 }
 
@@ -256,23 +283,4 @@ input.error {
   100% {
     transform: rotate(360deg);
   }
-}
-nav{
-  display: flex;
-  align-items: center;
-}
-nav a{
-  margin-left: 10px;
-  font-weight: 100;
-  
-}
-
-/* signup form */
-
-form.signup, form.login{
-  max-width: 400px;
-  margin: 40px auto;
-  background: #E2EEE2;
-  padding: 15px;
-  border-radius: 4px;
 }

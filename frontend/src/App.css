@@ -257,3 +257,22 @@ input.error {
     transform: rotate(360deg);
   }
 }
+nav{
+  display: flex;
+  align-items: center;
+}
+nav a{
+  margin-left: 10px;
+  font-weight: 100;
+  
+}
+
+/* signup form */
+
+form.signup, form.login{
+  max-width: 400px;
+  margin: 40px auto;
+  background: #E2EEE2;
+  padding: 15px;
+  border-radius: 4px;
+}

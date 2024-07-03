@@ -16,6 +16,12 @@ const Navbar = () => {
             Diet
           </h1>
         </Link>
+        <nav>
+          <div>
+            <Link to="/signup">Sign up</Link>
+            <Link to="/login">Login</Link>
+          </div>
+        </nav>
       </div>
     </header>
   );

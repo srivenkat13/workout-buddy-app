@@ -1,19 +1,25 @@
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { toSentenceCase } from "../utils/utility";
 import { useFormContext } from "../hooks/useFormContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const API = import.meta.env.VITE_API;
 
 console.log(`%c working `, "background:blue; color:yellow");
 const DietDetails = ({ diet }) => {
   const { dcontext } = useFormContext();
+  const { user } = useAuthContext();
+
   const handleClick = async () => {
     const response = await fetch(`${API}/api/diets/` + diet._id, {
       method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${user.token}`,
+      },
     });
 
     const json = await response.json();
-    console.info(json)
+    console.info(json);
 
     if (response.ok) {
       dcontext.dispatch({ type: "DELETE_DIET", payload: json });

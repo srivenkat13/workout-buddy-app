@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
 import { useFormContext } from "../hooks/useFormContext";
+import { useAuthContext } from "../hooks/useAuthContext";
+
 
 const API = import.meta.env.VITE_API;
 const DietForm = () => {
@@ -11,6 +13,7 @@ const DietForm = () => {
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
   const FoodRef = useRef();
+  const {user} = useAuthContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +33,7 @@ const DietForm = () => {
         body: JSON.stringify(newDiet),
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${user.token}`,
         },
       });
 

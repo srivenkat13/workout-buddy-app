@@ -74,7 +74,7 @@ h1.active::after {
   grid-template-columns: 2fr 1fr;
   gap: 100px;
 }
-.workouts{
+.no_content{
   text-align: center;
 }
 .workout-details {

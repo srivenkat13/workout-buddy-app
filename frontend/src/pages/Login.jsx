@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
-import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -37,9 +36,6 @@ const Login = () => {
         {isLoading ? "Loading...." : "Login"}
       </button>
       {error && <div className="error">{error}</div>}
-      <div className="redirects">
-        <Link to="/signup">New User ? </Link>
-      </div>
     </form>
   );
 };

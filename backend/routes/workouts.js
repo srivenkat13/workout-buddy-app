@@ -8,9 +8,13 @@ const {
   deleteWorkout,
   updateWorkout,
 } = require("../controllers/workoutController");
+const requireAuth = require("../middleware/requireAuth");
 
+router.use(requireAuth)
 router.get("/", getWorkouts);
-router.get("/hello", (req,res) => {res.json({msg: 'Gello here'}) } );
+router.get("/hello", (req, res) => {
+  res.json({ msg: "Gello here" });
+});
 router.get("/:id", getAWorkout);
 router.post("/", createWorkout);
 router.delete("/:id", deleteWorkout);

@@ -8,7 +8,7 @@ import Diet from "./pages/Diet";
 import Navbar from "./components/Navbar";
 
 function App() {
-  const {user: Loggedin} = useAuthContext();
+  const { user: Loggedin } = useAuthContext();
   return (
     <>
       <div className="App">
@@ -28,8 +28,11 @@ function App() {
                 path="/signup"
                 element={!Loggedin ? <Signup /> : <Navigate to="/" />}
               />
-              <Route path="/diet" element={<Diet />} />
-              <Route path="*" element={<Home />} />
+              <Route
+                path="/diet"
+                element={Loggedin ? <Diet /> : <Navigate to="/login" />}
+              />
+              <Route path="*" element={<p className="no_content"> 👩‍🚀These links might 👆 </p>} />
             </Routes>
           </div>
         </BrowserRouter>

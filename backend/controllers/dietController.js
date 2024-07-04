@@ -2,7 +2,8 @@ const { mongoose } = require("mongoose");
 const Diet = require("../models/dietModel");
 
 const getAllDiets = async (req, res) => {
-  const diets = await Diet.find({}).sort({ createdAt: -1 });
+  const user_id = req.user._id
+  const diets = await Diet.find({user_id}).sort({ createdAt: -1 });
   res.status(200).json(diets);
 };
 
@@ -37,7 +38,8 @@ const createDiet = async (req, res) => {
       .json({ error: "Fill in all the fields", emptyFields });
   }
   try {
-    const result = await Diet.create({ food, portion, macros });
+    const user_id = req.user._id
+    const result = await Diet.create({ food, portion, macros, user_id });
     return res.status(201).json(result);
   } catch (error) {
     //  to handle a case duplicate entries

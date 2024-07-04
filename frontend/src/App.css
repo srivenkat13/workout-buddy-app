@@ -74,6 +74,9 @@ h1.active::after {
   grid-template-columns: 2fr 1fr;
   gap: 100px;
 }
+.workouts{
+  text-align: center;
+}
 .workout-details {
   background: #fff;
   border-radius: 4px;
@@ -205,6 +208,9 @@ nav a {
   margin-left: 10px;
   font-weight: 100;
 }
+.user{
+  font-style: italic;
+}
 nav button {
   background: #fff;
   color: var(--primary);
@@ -216,6 +222,10 @@ nav button {
   font-size: 1em;
   margin-left: 10px;
 }
+nav button:hover {
+  background: var(--primary);
+  color: #fff;
+}
 
 /* signup and login  form */
 form.signup,
@@ -226,6 +236,16 @@ form.login {
   padding: 15px;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.redirects{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+form a{
+  color:#1aac83;
+  text-decoration: none;
+  font-weight: 300;
 }
 /* Mobile styles */
 @media (max-width: 768px) {
@@ -265,7 +285,21 @@ form.login {
   form h3 {
     text-align: center;
   }
-}/* visiblity btn */
+  header h1 {
+    font-size: 12px;
+  }
+  nav {
+    flex-direction: row;
+  }
+  .user{
+    font-size: small;
+  }
+  nav button {
+    padding: 3px 6px;
+    font-size: 0.8em;
+  }
+
+} /* visiblity btn */
 .toggle-form {
   display: block;
   position: fixed;

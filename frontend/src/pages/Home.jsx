@@ -49,6 +49,7 @@ const Home = () => {
             <Loader icon="fitness_center" />
           ) : (
             <div className="workouts">
+              {wcontext.workouts.length === 0  && <p>No workouts added</p>}
               {wcontext.workouts &&
                 wcontext.workouts.map((workout) => (
                   <motion.div

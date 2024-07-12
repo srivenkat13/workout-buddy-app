@@ -14,6 +14,17 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  streak : {
+    type : Number,
+    default: 0
+  },
+  lastLogin : {
+    type: Date
+  },
+  loginDates :{
+    type: [Date],
+    default : []
+  }
 });
 
 //static signup method

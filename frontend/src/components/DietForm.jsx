@@ -94,12 +94,12 @@ const DietForm = () => {
         placeholder="protein, fat, carb..."
         required
       />
-      <label>Marco Weight:</label>
+      <label>Macro Weight:</label>
       <input
         type="number"
         onChange={(e) => setMWeight(e.target.value)}
         value={mWeight}
-        placeholder="amount of marco"
+        placeholder="amount of macro"
         required
       />
       <button>Add Meal</button>
